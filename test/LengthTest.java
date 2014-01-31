@@ -81,4 +81,12 @@ public class LengthTest {
         assertEquals(1.0, lengthInYard.getLength());
 
     }
+    @Test
+    public void testShouldConvertLengthFromKilometerToMiles() throws Exception {
+        Length lengthInKilometer = new Length(1, Unit.KILOMETER);
+
+        Length lengthInMile = lengthInKilometer.convertTo(Unit.MILE);
+        assertEquals(0.621371, lengthInMile.getLength(),0.001);
+
+    }
 }
