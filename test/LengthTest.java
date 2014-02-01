@@ -14,8 +14,8 @@ public class LengthTest {
     public void testShouldGiveLengthInCentiMeter() throws Exception {
         Length lengthInCentimeter = new Length(10, LengthUnit.CENTIMETER);
 
-        assertEquals(10.0, lengthInCentimeter.getLength());
-        assertEquals(LengthUnit.CENTIMETER, lengthInCentimeter.getLengthUnit());
+        assertEquals(10.0, lengthInCentimeter.getValue());
+        assertEquals(LengthUnit.CENTIMETER, lengthInCentimeter.getUnit());
     }
 
     @Test
@@ -40,7 +40,6 @@ public class LengthTest {
 
         Length lengthInKilometer = lengthInMeter.convertTo(LengthUnit.KILOMETER);
         assertEquals(lengthInMeter, lengthInKilometer);
-        assertEquals(lengthInKilometer.getLength(), 2.0);
     }
 
     @Test
@@ -49,7 +48,6 @@ public class LengthTest {
 
         Length lengthInMilimeter = lengthInCentimeter.convertTo(LengthUnit.MILIMETER);
         assertEquals(lengthInCentimeter, lengthInMilimeter);
-        assertEquals(lengthInMilimeter.getLength(), 200.0);
     }
 
     @Test
@@ -58,7 +56,6 @@ public class LengthTest {
 
         Length lengthInInch = lengthInMeter.convertTo(LengthUnit.INCH);
         assertEquals(lengthInMeter, lengthInInch);
-        assertEquals(39.3701, lengthInInch.getLength(), 0.1);
 
     }
 
@@ -68,7 +65,6 @@ public class LengthTest {
 
         Length lengthInFeet = lengthInInch.convertTo(LengthUnit.FEET);
         assertEquals(lengthInInch, lengthInFeet);
-        assertEquals(1.0, lengthInFeet.getLength());
 
     }
 
@@ -77,15 +73,14 @@ public class LengthTest {
         Length lengthInFeet = new Length(3, LengthUnit.FEET);
 
         Length lengthInYard = lengthInFeet.convertTo(LengthUnit.YARD);
-        assertEquals(1.0, lengthInYard.getLength());
-
+        assertEquals(lengthInFeet,lengthInYard);
     }
     @Test
     public void testShouldConvertLengthFromKilometerToMiles() throws Exception {
         Length lengthInKilometer = new Length(1, LengthUnit.KILOMETER);
 
         Length lengthInMile = lengthInKilometer.convertTo(LengthUnit.MILE);
-        assertEquals(0.621371, lengthInMile.getLength(),0.001);
+        assertEquals(lengthInKilometer,lengthInMile);
 
     }
 }

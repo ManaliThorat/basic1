@@ -8,21 +8,24 @@ public class VolumeTest {
         Volume volume1 = new Volume(10, VolumeUnit.LITRE);
         Volume volume2 = new Volume(10, VolumeUnit.LITRE);
         assertEquals(true,volume1.equals(volume2));
+
+
     }
     @Test
     public void shouldGiveVolumeInSpecifiedUnit() throws Exception {
         Volume volumeInLitre = new Volume(10, VolumeUnit.LITRE);
 
         assertEquals(10.0, volumeInLitre.getValue());
-        assertEquals(VolumeUnit.LITRE, volumeInLitre.getVolumeUnit());
+        assertEquals(VolumeUnit.LITRE, volumeInLitre.getUnit());
     }
     @Test
-    public void testShouldConvertLengthFromMililitreToLitre() throws Exception {
-        Volume VolumeInMiliLitre = new Volume(1000, VolumeUnit.MILILITRE);
+    public void testShouldConvertLengthFromMillilitreToLitre() throws Exception {
+        Volume VolumeInMilliLitre = new Volume(1000, VolumeUnit.MILILITRE);
 
-        Volume volumeInLitre = VolumeInMiliLitre.convertTo(VolumeUnit.LITRE);
+        Volume volumeInLitre = VolumeInMilliLitre.convertTo(VolumeUnit.LITRE);
         assertEquals(1.0, volumeInLitre.getValue());
-        assertEquals(VolumeUnit.LITRE,volumeInLitre.getVolumeUnit());
+
+
     }
     @Test
     public void testShouldConvertLengthFromLitreToKiloLitre() throws Exception {
@@ -30,7 +33,6 @@ public class VolumeTest {
 
         Volume volumeInKiloLitre = VolumeInLitre.convertTo(VolumeUnit.KILOLITRE);
         assertEquals(1.0, volumeInKiloLitre.getValue());
-        assertEquals(VolumeUnit.KILOLITRE, volumeInKiloLitre.getVolumeUnit());
     }
     @Test
     public void testShouldConvertLengthFromKiloLitreToGallons() throws Exception {
@@ -39,7 +41,6 @@ public class VolumeTest {
         Volume volumeInGallon = volumeInKiloLitre.convertTo(VolumeUnit.GALLON);
         assertEquals(volumeInGallon,volumeInKiloLitre);
         assertEquals(264.172052, volumeInGallon.getValue(),0.5);
-        assertEquals(VolumeUnit.GALLON, volumeInGallon.getVolumeUnit());
 
     }
 }
