@@ -21,18 +21,19 @@ public class VolumeTest {
     @Test
     public void testShouldConvertLengthFromMillilitreToLitre() throws Exception {
         Volume VolumeInMilliLitre = new Volume(1000, VolumeUnit.MILILITRE);
-
+        Volume volume1 = new Volume(1,VolumeUnit.LITRE);
         Volume volumeInLitre = VolumeInMilliLitre.convertTo(VolumeUnit.LITRE);
-        assertEquals(1.0, volumeInLitre.getValue());
+        assertEquals(volume1,volumeInLitre);
 
 
     }
     @Test
     public void testShouldConvertLengthFromLitreToKiloLitre() throws Exception {
         Volume VolumeInLitre = new Volume(1000, VolumeUnit.LITRE);
+        Volume volume1 = new Volume(1,VolumeUnit.KILOLITRE);
 
         Volume volumeInKiloLitre = VolumeInLitre.convertTo(VolumeUnit.KILOLITRE);
-        assertEquals(1.0, volumeInKiloLitre.getValue());
+        assertEquals(volume1,volumeInKiloLitre);
     }
     @Test
     public void testShouldConvertLengthFromKiloLitreToGallons() throws Exception {
@@ -40,7 +41,6 @@ public class VolumeTest {
 
         Volume volumeInGallon = volumeInKiloLitre.convertTo(VolumeUnit.GALLON);
         assertEquals(volumeInGallon,volumeInKiloLitre);
-        assertEquals(264.172052, volumeInGallon.getValue(),0.5);
 
     }
 }
