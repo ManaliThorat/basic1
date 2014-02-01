@@ -1,24 +1,24 @@
-public class Length {
+public class Length extends Measurement {
     private double length;
-    private Unit unit;
+    private LengthUnit lengthUnit;
 
-    public Length(double length, Unit unit) {
+    public Length(double length, LengthUnit lengthUnit) {
         if (length <= 0 && length >= 1) throw new IllegalArgumentException();
         this.length = length;
-        this.unit = unit;
+        this.lengthUnit = lengthUnit;
     }
 
     public double getLength() {
         return length;
     }
 
-    public Unit getUnit() {
-        return unit;
+    public LengthUnit getLengthUnit() {
+        return lengthUnit;
     }
 
     @Override
     public String toString() {
-        return length + " " + unit;
+        return length + " " + lengthUnit;
     }
     public static boolean areDoublesEqual(double a, double b){
         double DELTA = 0.0004;
@@ -30,12 +30,12 @@ public class Length {
             return false;
         }
         Length that = (Length)o;
-        Length thatAbsoluteLength = that.convertTo(this.unit);
+        Length thatAbsoluteLength = that.convertTo(this.lengthUnit);
 
         return  (areDoublesEqual(this.length,thatAbsoluteLength.length));
     }
 
-    public Length convertTo(Unit other) {
-        return new Length(this.getUnit().getUnitValue() / other.getUnitValue() * this.length,other);
+    public Length convertTo(LengthUnit other) {
+        return new Length(this.getLengthUnit().getUnitValue() / other.getUnitValue() * this.length,other);
     }
 }
